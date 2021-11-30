@@ -20,10 +20,14 @@ public class SavingsAccount implements AccountService{
 	@Override
 	public void withdraw(String accountNum, BigDecimal amountToWithdraw) {
 		
-		balance = balance.subtract(amountToWithdraw);
+		if(balance.compareTo(amountToWithdraw) == 0 || balance.compareTo(amountToWithdraw) == 1) {
+			// withdraw
+			balance = balance.subtract(amountToWithdraw);
+		}else  {
+			// cannot withdraw
+			
+		}
 		
-		System.out.println(amountToWithdraw + " withdrawn from Account No. " + accountNum);
-		System.out.println("New Balance is: " + balance);
 		
 	}
 

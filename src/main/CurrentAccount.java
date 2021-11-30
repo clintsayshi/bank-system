@@ -17,8 +17,26 @@ public class CurrentAccount implements AccountService{
 	
 	@Override
 	public void withdraw(String accountNum, BigDecimal amountToWithdraw) {
-		// TODO Auto-generated method stub
-		System.out.println(amountToWithdraw);
+		// 
+		if(balance.compareTo(amountToWithdraw) == 0 || balance.compareTo(amountToWithdraw) == 1) {
+			// withdraw
+			balance = balance.subtract(amountToWithdraw);
+			
+		}else if(balance.compareTo(amountToWithdraw) == -1){
+			// once in this if, when user qualifies to withdraw, we substract that from the overdraft
+			BigDecimal balancePlusOverdraft = balance.add(overdraft);
+			
+			if(amountToWithdraw.compareTo(balancePlusOverdraft) == 0) { 
+				// withdraw
+				balance = balance.subtract(amountToWithdraw);
+			}
+			else if(amountToWithdraw.compareTo(balancePlusOverdraft) == -1) {
+				// withdraw
+			}else {
+				// withdraw
+				
+			}
+		}
 	}
 
 }
